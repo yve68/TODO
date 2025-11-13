@@ -1,5 +1,5 @@
 function Cat() {
-  return <div>🐱</div>; // 暂时放个小猫表情
+  return <div>🐱</div>; // 
 }
 
 export default Cat;

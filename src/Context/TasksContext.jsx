@@ -9,6 +9,19 @@ const initialState = {
   sortBy: "createdAt",       // createdAt / deadline / priority
 };
 
+function initTasksState() {
+  if (typeof window === "undefined") return initialState;
+  try {
+    const saved = localStorage.getItem("tasks");
+    if (!saved) return initialState;
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return initialState;
+    return { ...initialState, tasks: parsed };
+  } catch {
+    return initialState;
+  }
+}
+
 // ----------------------
 // Reducer
 // ----------------------
@@ -51,15 +64,7 @@ const TasksContext = createContext();
 
 
 export function TasksProvider({ children }) {
-  const [state, dispatch] = useReducer(tasksReducer, initialState);
-
-
-  useEffect(() => {
-    const saved = localStorage.getItem("tasks");
-    if (saved) {
-      dispatch({ type: "LOAD_TASKS", payload: JSON.parse(saved) });
-    }
-  }, []);
+  const [state, dispatch] = useReducer(tasksReducer, initialState, initTasksState);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(state.tasks));

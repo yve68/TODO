@@ -1,29 +1,29 @@
-import CategoryFilter from './Components/CategoryFilter/CategoryFilter.jsx';
-import SortBar from './Components/SortBar/SortBar.jsx';
-import TaskList from './Components/TaskList/TaskList.jsx';
-import AddTask from './Components/AddTask/AddTask.jsx';
-import Cat from './Components/CatAssisant/Cat.jsx';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { TasksProvider } from "./Context/TasksContext.jsx";
+import HomePage from "./pages/Home.jsx";
+import CreateTaskPage from "./pages/CreateTask.jsx";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <h1 className="app-title">TodoFlow</h1>
-      </header>
+    <TasksProvider>
+      <BrowserRouter>
+        <div className="app-container">
+          <header className="header">
+            <h1 className="app-title">🐾 TodoFlow</h1>
+            <p className="app-subtitle">让每一天都轻盈又有序 💛</p>
+          </header>
 
-      <CategoryFilter />
-      <SortBar />
-
-      <TaskList />
-
-      <AddTask />
-
-      <Cat />
-    </div>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create" element={<CreateTaskPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </TasksProvider>
   );
 }
 
 export default App;
-

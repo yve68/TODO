@@ -1,0 +1,41 @@
+.task-item__content {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.task-item__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.task-desc {
+  margin: 0.4rem 0 0.6rem;
+  color: #7c5b43;
+  font-size: 0.9rem;
+}
+
+.task-meta {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: #a17a60;
+  flex-wrap: wrap;
+}
+
+.task-priority {
+  font-weight: 600;
+}
+
+.priority-high {
+  color: #ff5c5c;
+}
+
+.priority-medium {
+  color: #f5a623;
+}
+
+.priority-low {
+  color: #6ab04c;
+}
