@@ -36,7 +36,6 @@ function AppShell() {
         {!isWelcome && (
           <header className="header">
             <h1 className="app-title">🐾 TodoFlow</h1>
-            <p className="app-subtitle">让每一天都轻盈又有序 💛</p>
           </header>
         )}
 

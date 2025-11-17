@@ -366,3 +366,59 @@ body {
     padding: 0;
   }
 }
+
+/* ===== Loading Overlay ===== */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, #ffc78b, #ff9850 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-overlay--hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-overlay__content {
+  position: relative;
+  z-index: 5;
+  font-family: "Bebas Neue", "Poppins", sans-serif;
+  font-size: clamp(2.4rem, 10vw, 4rem);
+  letter-spacing: 0.3em;
+  color: #fff7ed;
+  text-shadow: 0 10px 25px rgba(149, 63, 4, 0.4);
+}
+
+.loading-overlay__shards {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  z-index: 3;
+}
+
+.loading-overlay__shards span {
+  background: #ff9850;
+  animation: loader-shard 1.2s ease forwards;
+  transform-origin: top;
+}
+
+@keyframes loader-shard {
+  0% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(0.1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
