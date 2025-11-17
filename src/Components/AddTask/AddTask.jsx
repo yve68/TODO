@@ -96,9 +96,9 @@ function AddTask({ onSuccess }) {
         </label>
 
         <label>
-          截止日期
+          截止时间
           <input
-            type="date"
+            type="datetime-local"
             name="deadline"
             value={form.deadline}
             onChange={handleChange}

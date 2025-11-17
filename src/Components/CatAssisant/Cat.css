@@ -1,0 +1,296 @@
+/* --- Wrapper --- */
+.fox-wrapper {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 999;
+}
+
+/* --- Idle vs Alert --- */
+.fox-wrapper.idle .fox-figure {
+  transform: translateY(10px) scale(1);
+  transition: transform 0.4s ease;
+}
+
+.fox-wrapper.alert .fox-figure {
+  animation: fox-alert-wiggle 0.6s ease;
+}
+
+/* --- Shadow (小狐狸影子) --- */
+.fox-shadow {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  width: 80px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+/* --- 整体狐狸 --- */
+.fox-figure {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 120px;
+  height: 120px;
+}
+
+/* --- 尾巴 --- */
+.fox-tail {
+  position: absolute;
+  bottom: 5px;
+  left: -25px;
+  width: 55px;
+  height: 55px;
+  background: #f7a979;
+  border-radius: 50% 50% 40% 60%;
+  transform-origin: top right;
+  animation: fox-tail-wag 3.5s ease-in-out infinite;
+}
+
+/* Idle 状态才摇尾巴 */
+.fox-wrapper.alert .fox-tail {
+  animation: fox-tail-alert 0.4s ease;
+}
+
+/* --- 身体 --- */
+.fox-body {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 85px;
+  height: 70px;
+  background: #f79552;
+  border-radius: 50px 50px 40px 40px;
+}
+
+/* --- 胸口毛 --- */
+.fox-body-fur {
+  position: absolute;
+  bottom: 10px;
+  left: 26px;
+  width: 38px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff2e1;
+}
+
+/* --- 头 --- */
+.fox-head {
+  position: absolute;
+  top: -35px;
+  right: 5px;
+  width: 70px;
+  height: 65px;
+  background: #f79552;
+  border-radius: 50px 50px 45px 45px;
+  transform-origin: bottom center;
+}
+
+/* Alert 时头抬起来 */
+.fox-wrapper.alert .fox-head {
+  animation: fox-head-alert 0.38s ease;
+}
+
+/* --- 耳朵 --- */
+.fox-ear {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #f79552;
+  border-radius: 8px 8px 0 0;
+  transform-origin: bottom center;
+}
+
+.fox-ear.left {
+  left: 6px;
+  top: -8px;
+}
+
+.fox-ear.right {
+  right: 6px;
+  top: -8px;
+}
+
+/* Alert 时耳朵抖抖 */
+.fox-wrapper.alert .fox-ear {
+  animation: fox-ear-wiggle 0.28s ease;
+}
+
+/* --- 脸部表情 --- */
+.fox-face {
+  position: absolute;
+  top: 20px;
+  left: 13px;
+  width: 44px;
+  height: 36px;
+}
+
+/* 眼睛 */
+.fox-eye {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3a2a1a;
+  border-radius: 50%;
+  top: 10px;
+}
+
+.fox-eye.left {
+  left: 0;
+}
+
+.fox-eye.right {
+  right: 0;
+}
+
+/* Idle：间歇眨眼 */
+.fox-wrapper.idle .fox-eye {
+  animation: fox-blink 4s infinite ease-in-out;
+}
+
+/* 鼻子 */
+.fox-nose {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  width: 10px;
+  height: 8px;
+  background: #3a2a1a;
+  border-radius: 50%;
+}
+
+/* --- 笑容 --- */
+.fox-smile {
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  width: 12px;
+  height: 4px;
+  border-bottom: 2px solid #3a2a1a;
+  border-radius: 0 0 50% 50%;
+}
+
+/* --- 爪子 --- */
+.fox-paws {
+  position: absolute;
+  bottom: -6px;
+  left: 24px;
+  display: flex;
+  gap: 6px;
+}
+
+.fox-paws span {
+  width: 14px;
+  height: 10px;
+  background: #f79552;
+  border-radius: 50% 50% 60% 60%;
+}
+
+/* --- 气泡 --- */
+.fox-bubble {
+  position: absolute;
+  bottom: 110px;
+  right: 0;
+  padding: 12px 14px;
+  background: #fff8ee;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fox-bubble-pop 0.25s ease-out;
+  max-width: 240px;
+  color: #5a3d2a;
+}
+
+.fox-wrapper.alert .fox-bubble {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  box-shadow: 0 14px 35px rgba(233, 121, 55, 0.22);
+  max-width: min(65vw, 260px);
+  height: 150px;
+  font-size: 0.9rem;
+  z-index: 1200;
+  text-align: center;
+  animation: fox-bubble-float 0.45s ease forwards;
+}
+
+.fox-bubble p {
+  margin: 0;
+  font-size: inherit;
+}
+
+.fox-bubble__task {
+  display: block;
+  color: #e6793b;
+  font-size: 0.85em;
+  margin-top: 0.25rem;
+}
+
+/* --- 动画定义 --- */
+
+/* 尾巴摇 */
+@keyframes fox-tail-wag {
+  0% { transform: rotate(-8deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(-8deg); }
+}
+
+/* Alert 时尾巴抖一下 */
+@keyframes fox-tail-alert {
+  0% { transform: rotate(0); }
+  40% { transform: rotate(-20deg); }
+  100% { transform: rotate(0); }
+}
+
+/* 眨眼 */
+@keyframes fox-blink {
+  0%, 4%, 100% { height: 8px; }
+  2% { height: 1px; }
+}
+
+/* 头抬起来 */
+@keyframes fox-head-alert {
+  0% { transform: translateY(0); }
+  60% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* 耳朵抖 */
+@keyframes fox-ear-wiggle {
+  0% { transform: rotate(0); }
+  50% { transform: rotate(-12deg); }
+  100% { transform: rotate(0); }
+}
+
+/* 提醒气泡 */
+@keyframes fox-bubble-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fox-bubble-float {
+  0% {
+    transform: translate(calc(-50% + 160px), 220px) scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* 整体提醒抖动 */
+@keyframes fox-alert-wiggle {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}

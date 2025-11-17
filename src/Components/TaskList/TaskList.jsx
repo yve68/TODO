@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTasks } from "../../Context/TasksContext";
+import { getDeadlineTimestamp } from "../../utils/dateHelpers";
 import TaskItem from "../TaskItem/TaskItem";
 import "./TaskList.css";
 
@@ -29,8 +30,8 @@ function TaskList() {
         return new Date(b.createdAt) - new Date(a.createdAt);
       }
       if (sortBy === "deadline") {
-        const aDeadline = a.deadline ? new Date(a.deadline).getTime() : Infinity;
-        const bDeadline = b.deadline ? new Date(b.deadline).getTime() : Infinity;
+        const aDeadline = getDeadlineTimestamp(a.deadline) ?? Infinity;
+        const bDeadline = getDeadlineTimestamp(b.deadline) ?? Infinity;
         return aDeadline - bDeadline;
       }
       return (priorityToScore[b.priority] || 0) - (priorityToScore[a.priority] || 0);

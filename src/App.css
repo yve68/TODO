@@ -7,32 +7,41 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
+  margin: 0;
   padding: 3rem 1.5rem;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #root {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .app-container {
-  width: min(1100px, 90vw);
+  width: min(1100px, 95vw);
+  max-height: 85vh;
+  min-height: 70vh;
   margin: 0 auto;
   padding: 2.5rem 3rem 3rem;
   background-color: #fffaf5;
   border-radius: 30px;
   box-shadow: 0 6px 25px rgba(255, 180, 100, 0.25);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* ===== Header ===== */
 .header {
+  flex-shrink: 0;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .app-title {
@@ -45,6 +54,21 @@ body {
   color: #a17a60;
   font-size: 1rem;
   margin-top: 0.3rem;
+}
+
+/* ===== Layout ===== */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.home-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* ===== Controls ===== */
@@ -98,11 +122,19 @@ body {
 }
 
 /* ===== Task List ===== */
+.task-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .task-list {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
 }
 
 .task-item {
@@ -157,6 +189,7 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .primary-link-btn {
@@ -179,9 +212,12 @@ body {
 }
 
 .create-page {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
 .create-header h2 {
@@ -211,11 +247,14 @@ body {
 @media (max-width: 768px) {
   body {
     padding: 2rem 1rem;
+    align-items: flex-start;
   }
 
   .app-container {
     padding: 1.8rem 1.5rem 2.2rem;
     border-radius: 20px;
+    max-height: none;
+    min-height: auto;
   }
 
   .control-bar {
@@ -233,5 +272,13 @@ body {
 
   .task-input {
     width: 100%;
+  }
+
+  .card-content,
+  .home-layout,
+  .task-scroll-area,
+  .create-page {
+    overflow: visible;
+    padding-right: 0;
   }
 }

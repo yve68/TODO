@@ -41,7 +41,8 @@
 }
 
 .add-task__meta select,
-.add-task__meta input[type="date"] {
+.add-task__meta input[type="date"],
+.add-task__meta input[type="datetime-local"] {
   padding: 8px 12px;
   border-radius: 12px;
   border: 1px solid #ffdab3;

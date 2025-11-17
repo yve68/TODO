@@ -15,7 +15,7 @@ function CreateTaskPage() {
           ← 返回任务列表
         </Link>
         <h2>创建新的待办事项</h2>
-        <p className="create-subtitle">填写任务信息，让旅程继续有序 ✨</p>
+        
       </div>
 
       <AddTask onSuccess={handleSuccess} />

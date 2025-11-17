@@ -1,4 +1,5 @@
 import "./TaskItem.css";
+import { formatDeadline } from "../../utils/dateHelpers";
 
 const CATEGORY_LABEL = {
   work: "工作",
@@ -11,15 +12,6 @@ const PRIORITY_LABEL = {
   medium: "中",
   low: "低",
 };
-
-function formatDate(dateString) {
-  if (!dateString) return "";
-  const date = new Date(dateString);
-  return date.toLocaleDateString("zh-CN", {
-    month: "short",
-    day: "numeric",
-  });
-}
 
 function TaskItem({ task, onToggle, onDelete }) {
   return (
@@ -36,7 +28,7 @@ function TaskItem({ task, onToggle, onDelete }) {
         )}
         <div className="task-meta">
           {task.deadline && (
-            <span className="task-deadline">📅 {formatDate(task.deadline)}</span>
+            <span className="task-deadline">📅 {formatDeadline(task.deadline)}</span>
           )}
           <span className={`task-priority priority-${task.priority}`}>
             优先级：{PRIORITY_LABEL[task.priority]}
@@ -46,10 +38,10 @@ function TaskItem({ task, onToggle, onDelete }) {
 
       <div className="task-actions">
         <button type="button" onClick={onToggle}>
-          {task.completed ? "未完成" : "完成"}
+          {task.completed ? "↩ 未完成" : "✅ 完成"}
         </button>
         <button type="button" onClick={onDelete}>
-          删除
+          🗑 删除
         </button>
       </div>
     </div>
