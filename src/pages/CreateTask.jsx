@@ -11,7 +11,7 @@ function CreateTaskPage() {
   return (
     <div className="create-page">
       <div className="create-header">
-        <Link to="/" className="back-link">
+        <Link to="/app" className="back-link">
           ← 返回任务列表
         </Link>
         <h2>创建新的待办事项</h2>
