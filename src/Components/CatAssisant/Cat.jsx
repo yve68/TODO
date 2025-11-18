@@ -79,11 +79,11 @@ function FoxAssistant() {
 
       {isAlert && (
         <div className="fox-bubble">
-          <p>呼呼～你的任务到时间了！</p>
+          <p>你的任务到时间了！</p>
           {alertTask?.title && (
             <span className="fox-bubble__task">「{alertTask.title}」</span>
           )}
-          <small>轻点我，小狐狸就回去趴着啦</small>
+          <small>轻点我,稍后提醒～</small>
         </div>
       )}
     </div>

@@ -5,7 +5,7 @@ function CreateTaskPage() {
   const navigate = useNavigate();
 
   const handleSuccess = () => {
-    navigate("/");
+    navigate("/app");
   };
 
   return (
@@ -15,7 +15,6 @@ function CreateTaskPage() {
           ← 返回任务列表
         </Link>
         <h2>创建新的待办事项</h2>
-        
       </div>
 
       <AddTask onSuccess={handleSuccess} />

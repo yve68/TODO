@@ -41,7 +41,7 @@ function TaskList() {
   }, [tasks, filterCategory, sortBy]);
 
   if (!visibleTasks.length) {
-    return <p className="empty-state">暂时没有任务，点击上方添加一个吧s</p>;
+    return <p className="empty-state">暂时没有任务，点击上方添加一个吧</p>;
   }
 
   return (
